@@ -1,3 +1,14 @@
 <resources>
+
     <string name="app_name">Firebase Create Account</string>
+
+    <!-- MainActivity Strings Start -->
+    <string name="main_activity_hint_name">Name</string>
+    <string name="main_activity_hint_email">Email</string>
+    <string name="main_activity_hint_phone">Phone</string>
+    <string name="main_activity_hint_document_id">Document ID</string>
+    <string name="main_activity_hint_blood_type">Blood Type</string>
+    <string name="main_activity_button_create_account">Create Account</string>
+    <!-- MainActivity Strings End -->
+
 </resources>
