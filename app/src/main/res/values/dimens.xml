@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="four_margin">4dp</dimen>
+    <dimen name="eight_margin">8dp</dimen>
+    <dimen name="sixteen_margin">16dp</dimen>
+    <dimen name="twenty_four_margin">24dp</dimen>
+    <dimen name="thirty_two_margin">32dp</dimen>
+    <dimen name="fourty_eight_margin">48dp</dimen>
+    <dimen name="sixty_four_margin">64dp</dimen>
+    <dimen name="firebase_logo_height">150dp</dimen>
+</resources>
