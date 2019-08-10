@@ -5,8 +5,11 @@
     <!-- MainActivity Strings Start -->
     <string name="main_activity_hint_name">Name</string>
     <string name="main_activity_hint_email">Email</string>
+    <string name="main_activity_helper_40">Max. 40 Characters</string>
     <string name="main_activity_hint_phone">Phone</string>
+    <string name="main_activity_helper_16">Max. 16 Characters</string>
     <string name="main_activity_hint_document_id">Document ID</string>
+    <string name="main_activity_helper_10">Max. 10 Characters</string>
     <string name="main_activity_hint_blood_type">Blood Type</string>
     <string name="main_activity_button_create_account">Create Account</string>
     <!-- MainActivity Strings End -->
