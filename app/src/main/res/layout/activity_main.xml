@@ -23,7 +23,7 @@
             android:layout_marginTop="0dp"
             android:hint="@string/main_activity_hint_name"
             app:errorEnabled="true"
-            app:helperText="@string/main_activity_helper_40">
+            app:helperText="@string/main_activity_helper_name">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/txt_name"
@@ -37,7 +37,7 @@
             android:id="@+id/ly_email"
             style="@style/MainActivityTextInputLayout"
             android:hint="@string/main_activity_hint_email"
-            app:helperText="@string/main_activity_helper_40">
+            app:helperText="@string/main_activity_helper_name">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/txt_email"
@@ -48,14 +48,16 @@
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
+            android:id="@+id/ly_phone"
             style="@style/MainActivityTextInputLayout"
             android:hint="@string/main_activity_hint_phone"
-            app:helperText="@string/main_activity_helper_16">
+            app:helperText="@string/main_activity_helper_20">
 
             <android.support.design.widget.TextInputEditText
+                android:id="@+id/txt_phone"
                 style="@style/MainActivityEditText"
                 android:inputType="phone"
-                android:maxLength="16" />
+                android:maxLength="20" />
 
         </android.support.design.widget.TextInputLayout>
 
