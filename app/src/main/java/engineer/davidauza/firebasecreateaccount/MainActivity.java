@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         setUpNameEditText();
+        setUpEmailEditText();
     }
 
     /**
@@ -57,6 +58,39 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    /**
+     * This method configures the behavior of the email EditText.
+     */
+    private void setUpEmailEditText() {
+        TextInputEditText emailEditText = findViewById(R.id.txt_email);
+        final TextInputLayout EMAIL_LAYOUT = findViewById(R.id.ly_email);
+        // Listener for the action method on the editor
+        emailEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (checkEmail(v.getText())) {
+                    if (EMAIL_LAYOUT.getError() != null) {
+                        EMAIL_LAYOUT.setError(null);
+                    }
+                } else {
+                    EMAIL_LAYOUT.setError(getString(R.string.main_activity_error_email));
+                }
+                return false;
+            }
+        });
+    }
+
+    /**
+     * This method checks if a CharSequence is built with an email format.
+     *
+     * @param pEmailEntered is the CharSequence to check.
+     * @return true if the CharSequence contains a text with an email format, otherwise it returns
+     * false.
+     */
+    private boolean checkEmail(CharSequence pEmailEntered) {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(pEmailEntered).matches();
     }
 
 }

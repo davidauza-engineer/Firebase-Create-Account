@@ -7,6 +7,7 @@
     <string name="main_activity_helper_name">Min</string>
     <string name="main_activity_error_name">* Please enter a valid name</string>
     <string name="main_activity_hint_email">Email</string>
+    <string name="main_activity_error_email">* Please enter a valid email</string>
     <string name="main_activity_helper_40">Max. 40 Characters</string>
     <string name="main_activity_hint_phone">Phone</string>
     <string name="main_activity_helper_16">Max. 16 Characters</string>
