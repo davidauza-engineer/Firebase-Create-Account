@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
                 String nameEntered = v.getText().toString();
                 if (nameEntered.equals("")) {
                     NAME_LAYOUT.setError(getString(R.string.main_activity_error_name));
+                } else if (nameEntered.length() < 6) {
+                    NAME_LAYOUT.setError("* " + getString(R.string.main_activity_helper_name));
                 }
                 return false;
             }
@@ -53,7 +55,9 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (s.length() == 1) {
+                int length = s.length();
+                if (length == 1
+                        || length == 6) {
                     if (NAME_LAYOUT.getError() != null) {
                         NAME_LAYOUT.setError(null);
                     }
@@ -61,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    // TODO focus change validation
 
     /**
      * This method configures the behavior of the email EditText.
