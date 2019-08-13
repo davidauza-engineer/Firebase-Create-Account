@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.widget.TextView;
 
@@ -51,18 +50,13 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                Log.e("TextChange", "CHANGE");
-                if (NAME_LAYOUT.getError() != null) {
-                    NAME_LAYOUT.setError(null);
+                if (s.length() == 1) {
+                    if (NAME_LAYOUT.getError() != null) {
+                        NAME_LAYOUT.setError(null);
+                    }
                 }
-//                if (s.length() > 0) {
-//                    Log.e("1", "Empty");
-//                    if (NAME_LAYOUT.getError() != null) {
-//                        NAME_LAYOUT.setError(null);
-//                        Log.e("2", "Quitado");
-//                    }
-//                }
             }
         });
     }
+
 }
