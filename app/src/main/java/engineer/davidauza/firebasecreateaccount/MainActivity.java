@@ -1,13 +1,14 @@
 package engineer.davidauza.firebasecreateaccount;
 
+import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Patterns;
 import android.view.KeyEvent;
+import android.view.View;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -28,17 +29,25 @@ public class MainActivity extends AppCompatActivity {
     private void setUpNameEditText() {
         TextInputEditText nameEditText = findViewById(R.id.txt_name);
         final TextInputLayout NAME_LAYOUT = findViewById(R.id.ly_name);
-        // Listener for the action button on the editor
-        nameEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        // Listener for focus changes
+        nameEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                String nameEntered = v.getText().toString();
-                if (nameEntered.equals("")) {
-                    NAME_LAYOUT.setError(getString(R.string.main_activity_error_name));
-                } else if (nameEntered.length() < 6) {
-                    NAME_LAYOUT.setError("* " + getString(R.string.main_activity_helper_name));
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    TextInputEditText nameEditText = (TextInputEditText) v;
+                    String nameEntered = "";
+                    try {
+                        nameEntered = nameEditText.getText().toString();
+                    } catch (NullPointerException e) {
+                        e.printStackTrace();
+                    }
+                    // Set the error for the name layout in case the text is less than 5 characters
+                    // long
+                    if (nameEntered.length() < 5) {
+                        NAME_LAYOUT.setError(getString(R.string.main_activity_error_name) + " "
+                                + getString(R.string.main_activity_helper_name));
+                    }
                 }
-                return false;
             }
         });
         // Listener for changes in text
@@ -55,9 +64,8 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                int length = s.length();
-                if (length == 1
-                        || length == 6) {
+                if (s.length() == 5) {
+                    // If there is an error being displayed, clear it
                     if (NAME_LAYOUT.getError() != null) {
                         NAME_LAYOUT.setError(null);
                     }
@@ -65,8 +73,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-    // TODO focus change validation
 
     /**
      * This method configures the behavior of the email EditText.
