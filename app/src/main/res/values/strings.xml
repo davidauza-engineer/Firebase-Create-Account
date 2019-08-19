@@ -4,7 +4,7 @@
 
     <!-- MainActivity Strings Start -->
     <string name="main_activity_hint_name">Full Name</string>
-    <string name="main_activity_helper_name">Min. 5 - Max. 40 Characters</string>
+    <string name="main_activity_helper_name">Min. 4 - Max. 40 Characters</string>
     <string name="main_activity_error_name">* Error:</string>
     <string name="main_activity_hint_email">Email</string>
     <string name="main_activity_error_email">* Please enter a valid email</string>

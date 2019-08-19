@@ -27,23 +27,24 @@ public class MainActivity extends AppCompatActivity {
      * This method configures the behavior of the name EditText.
      */
     private void setUpNameEditText() {
-        TextInputEditText nameEditText = findViewById(R.id.txt_name);
+        final TextInputEditText NAME_EDIT_TEXT = findViewById(R.id.txt_name);
         final TextInputLayout NAME_LAYOUT = findViewById(R.id.ly_name);
         // Listener for focus changes
-        nameEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        NAME_EDIT_TEXT.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (!hasFocus) {
-                    TextInputEditText nameEditText = (TextInputEditText) v;
                     String nameEntered = "";
                     try {
-                        nameEntered = nameEditText.getText().toString();
+                        nameEntered = NAME_EDIT_TEXT.getText().toString();
                     } catch (NullPointerException e) {
                         e.printStackTrace();
                     }
-                    // Set the error for the name layout in case the text is less than 5 characters
-                    // long
-                    if (nameEntered.length() < 5) {
+                    // Remove spaces from the String
+                    nameEntered = nameEntered.replaceAll("\\s", "");
+                    // Set the error for the name layout in case the text is less than 4 characters
+                    // long, once the spaces had been removed
+                    if (nameEntered.length() < 4) {
                         NAME_LAYOUT.setError(getString(R.string.main_activity_error_name) + " "
                                 + getString(R.string.main_activity_helper_name));
                     }
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         // Listener for changes in text
-        nameEditText.addTextChangedListener(new TextWatcher() {
+        NAME_EDIT_TEXT.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -64,10 +65,17 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (s.length() == 5) {
+                if (s.length() >= 5) {
                     // If there is an error being displayed, clear it
                     if (NAME_LAYOUT.getError() != null) {
-                        NAME_LAYOUT.setError(null);
+                        // Get the content in the name EditText without spaces
+                        String editTextContent = NAME_EDIT_TEXT.getText().toString().
+                                replaceAll("\\s", "");
+                        if (editTextContent.length() >= 4) {
+                            // Remove the error if there are more than 4 characters once spaces
+                            // have been removed.
+                            NAME_LAYOUT.setError(null);
+                        }
                     }
                 }
             }
