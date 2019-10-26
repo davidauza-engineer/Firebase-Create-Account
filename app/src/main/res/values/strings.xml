@@ -15,6 +15,7 @@
     <string name="main_activity_helper_10">Max. 10 Characters</string>
     <string name="main_activity_hint_blood_type">Blood Type</string>
     <string name="main_activity_button_create_account">Create Account</string>
+    <string name="main_activity_img_content_description">Firebase logo</string>
     <!-- MainActivity Strings End -->
 
 </resources>
